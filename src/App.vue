@@ -1,49 +1,31 @@
 <template>
   <div id="app" class="container">
-    <img src="./assets/logo.png" class="logo">
-    <todo-list/>
+    <header class="topBar">
+      <section class="toBarSec">
+        <router-link to="/" class="todoListBtn">TodoList </router-link>
+         <router-link to="/foodlist" class="foodListBtn">FoodList </router-link>
+
+      </section>
+    </header>
+    <router-view />
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld'
-import TodoList from './components/TodoList'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-    TodoList
-  }
-}
-</script>
-
-
 <style>
-
-* {
-  box-sizing: border-box;
+.topBar {
+  box-shadow: 0px 1px 0px black;
+  margin: 4px;
 }
 
-.container {
-  max-width: 600px;
-  margin: 0 auto ;
+.todoListBtn {
+  text-decoration: none;
+  color: black;
 }
 
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  color: #2c3e50;
-  margin-top: 60px;
-  font-size: 24px;
+.foodListBtn {
+  text-decoration: none;
+  color: black;
+  margin-left: 16px;
 }
-
-.logo {
-display: block;
-margin: 0 auto;
-height: 205px;
-}
-
 </style>
+
