@@ -1,13 +1,15 @@
 <template>
   <div>
+    <top-bar-component />
     <img src="../assets/logo.png" class="logo" />
     <input
       type="text"
       class="todo-input"
-      placeholder="O que você precisa fazer?"
+      placeholder="What needs to be done"
       v-model="newTodo"
       @keyup.enter="addTodo"
     />
+
     <transition-group
       name="fade"
       enter-active-class="animated fadeInUp"
@@ -29,6 +31,7 @@
 
     <div class="extra-container">
       <todo-filtered></todo-filtered>
+
       <div>
         <transition name="fade">
           <todo-clear-completed></todo-clear-completed>
@@ -37,13 +40,13 @@
     </div>
   </div>
 </template>
-
 <script>
 import TodoItem from "../components/TodoItem";
-import TodoItemsRemaining from "../components/TodoItemsRemaining.vue";
-import TodoCheckAll from "../components/TodoCheckAll.vue";
-import TodoFiltered from "../components/TodoFiltered.vue";
-import TodoClearCompleted from "../components/TodoClearCompleted.vue";
+import TodoItemsRemaining from "./TodoItemsRemaining.vue";
+import TodoCheckAll from "./TodoCheckAll.vue";
+import TodoFiltered from "./TodoFiltered.vue";
+import TodoClearCompleted from "./TodoClearCompleted.vue";
+import TopBarComponent from "./topbar/TopBarComponent.vue";
 
 export default {
   name: "todo-list",
@@ -53,12 +56,16 @@ export default {
     TodoCheckAll,
     TodoFiltered,
     TodoClearCompleted,
+    TopBarComponent
   },
   data() {
     return {
       newTodo: "",
-      idForTodo: 3,
+      idForTodo: 3
     };
+  },
+  created() {
+    this.$store.dispatch("retrieveTodos");
   },
   computed: {
     anyRemaining() {
@@ -66,7 +73,7 @@ export default {
     },
     todosFiltered() {
       return this.$store.getters.todosFiltered;
-    },
+    }
   },
   methods: {
     addTodo() {
@@ -75,12 +82,12 @@ export default {
       }
       this.$store.dispatch("addTodo", {
         id: this.idForTodo,
-        title: this.newTodo,
+        title: this.newTodo
       });
       this.newTodo = "";
       this.idForTodo++;
-    },
-  },
+    }
+  }
 };
 </script>
 

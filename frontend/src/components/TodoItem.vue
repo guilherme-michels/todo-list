@@ -28,18 +28,17 @@
 </template>
 
 <script>
-
 export default {
   name: "todo-item",
   props: {
     todo: {
       type: Object,
-      required: true,
+      required: true
     },
     checkAll: {
       type: Boolean,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
@@ -47,26 +46,22 @@ export default {
       title: this.todo.title,
       completed: this.todo.completed,
       editing: this.todo.editing,
-      beforeEditCache: "",
+      beforeEditCache: ""
     };
   },
   watch: {
     checkAll() {
       this.completed = this.checkAll ? true : this.todo.completed;
-    },
+    }
   },
   directives: {
     focus: {
-      inserted: function (el) {
+      inserted: function(el) {
         el.focus();
-      },
-    },
+      }
+    }
   },
   methods: {
-
-    removeTodo(id) {
-      this.$store.dispatch("deleteTodo", id);
-    },
     editTodo() {
       this.beforeEditCache = this.title;
       this.editing = true;
@@ -80,14 +75,17 @@ export default {
         id: this.id,
         title: this.title,
         completed: this.completed,
-        editing: this.editing,
+        editing: this.editing
       });
     },
     cancelEdit() {
       this.title = this.beforeEditCache;
       this.editing = false;
     },
-  },
+    removeTodo(id) {
+      this.$store.dispatch("deleteTodo", id);
+    }
+  }
 };
 </script>
 

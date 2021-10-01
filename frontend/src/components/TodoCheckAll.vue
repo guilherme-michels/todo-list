@@ -1,7 +1,7 @@
 <template>
   <div>
     <label
-      ><input type="checkbox" :checked="anyRemaining" @change="allChecked" />
+      ><input type="checkbox" :checked="!anyRemaining" @change="allChecked" />
       Marcar tudo</label
     >
   </div>
@@ -12,13 +12,13 @@ export default {
   name: "todo-check-all",
   computed: {
     anyRemaining() {
-      this.$store.getters.anyRemaining
-    },
+      return this.$store.getters.anyRemaining;
+    }
   },
   methods: {
     allChecked() {
-      this.$store.dispatch('checkAll', event.target.checked)
-    },
-  },
+      this.$store.dispatch("checkAll", event.target.checked);
+    }
+  }
 };
 </script>

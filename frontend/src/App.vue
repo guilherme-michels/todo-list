@@ -1,12 +1,5 @@
 <template>
   <div id="app" class="container">
-    <header class="topBar">
-      <section class="toBarSec">
-        <router-link to="/" class="todoListBtn">TodoList </router-link>
-         <router-link to="/foodlist" class="foodListBtn">FoodList </router-link>
-
-      </section>
-    </header>
     <router-view />
   </div>
 </template>
@@ -22,10 +15,5 @@
   color: black;
 }
 
-.foodListBtn {
-  text-decoration: none;
-  color: black;
-  margin-left: 16px;
-}
 </style>
 

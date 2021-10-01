@@ -24,12 +24,12 @@ export default {
   computed: {
     filter() {
       return this.$store.state.filter;
-    },
+    }
   },
   methods: {
     changeFilter(filter) {
       this.$store.dispatch("updateFilter", filter);
-    },
-  },
+    }
+  }
 };
 </script>
